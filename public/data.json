@@ -110,14 +110,14 @@
     "badge": "Popular"
   },
   {
-    "id": "tailwindcss",
-    "name": "Tailwind CSS",
-    "category": "Styling",
-    "description": "A utility-first CSS framework for rapidly building custom user interfaces.",
-    "icon": "https://icon.icepanel.io/Technology/svg/Tailwind CSS.svg",
+    "id": "svelte",
+    "name": "Svelte",
+    "category": "Frontend",
+    "description": "A compiler-based JavaScript framework that builds highly optimized, reactive user interfaces with minimal runtime overhead.",
+    "icon": "https://icon.icepanel.io/Technology/svg/Svelte.svg",
     "rating": 4.8,
     "difficulty": "Beginner-Friendly",
-    "badge": "Utility-First"
+    "badge": "Compiler"
   },
   {
     "id": "docker",
