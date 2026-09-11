@@ -1,8 +1,11 @@
-import { use } from "react";
+import { toast } from "react-toastify";
+
+import { use, useState } from "react";
 
 import type ITechnologies from "../types/Technologies";
 
 import TechnologiesCard from "./TechnologiesCard";
+import StackCard from "./StackCard";
 
 interface ITechnologiesProps {
   technologiesFetch: Promise<ITechnologies[]>;
@@ -10,6 +13,22 @@ interface ITechnologiesProps {
 
 const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
   const technologies = use(technologiesFetch);
+
+  const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnologies[]>([]);
+
+  const handleAddToStack = (technology: ITechnologies) => {
+    const alreadySelected = selectedTechnologies.some(
+      (item) => item.id === technology.id
+    );
+
+    if (alreadySelected) {
+      toast.warning(`${technology.name} is already in your stack`);
+      return;
+    }
+
+    setSelectedTechnologies((prev) => [...prev, technology]);
+    toast.success(`${technology.name} added to stack`);
+  };
 
   return (
     <div className="container mx-auto px-4">
@@ -27,8 +46,17 @@ const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {technologies.map((technology) => (
-            <TechnologiesCard key={technology.id} technology={technology} />
+            <TechnologiesCard
+              key={technology.id}
+              technology={technology}
+              onAddToStack={handleAddToStack}
+            />
           ))}
+        </div>
+
+        {/* Your Stack */}
+        <div className="lg:col-span-1">
+          <StackCard selectedTechnologies={selectedTechnologies} />
         </div>
       </div>
     </div>
