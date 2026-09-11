@@ -30,6 +30,27 @@ const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
     toast.success(`${technology.name} added to stack`);
   };
 
+  const handleRemoveFromStack = (id: string) => {
+    const removed = selectedTechnologies.find(
+      (technology) => technology.id === id
+    );
+
+    setSelectedTechnologies((prev) =>
+      prev.filter((technology) => technology.id !== id)
+    );
+
+    if (removed) {
+      toast.info(`${removed.name} removed from stack`);
+    }
+  };
+
+  const handleRemoveAll = () => {
+    if (selectedTechnologies.length === 0) return;
+
+    setSelectedTechnologies([]);
+    toast.info("All technologies removed from your stack");
+  };
+
   return (
     <div className="container mx-auto px-4">
       <div className="my-8">
@@ -56,9 +77,14 @@ const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
 
         {/* Your Stack */}
         <div className="lg:col-span-1">
-          <StackCard selectedTechnologies={selectedTechnologies} />
+          <StackCard
+            selectedTechnologies={selectedTechnologies}
+            onRemoveFromStack={handleRemoveFromStack}
+            onRemoveAll={handleRemoveAll}
+          />
         </div>
       </div>
+      {/* Technology Cards */}
     </div>
   );
 };
