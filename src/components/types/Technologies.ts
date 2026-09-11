@@ -1,4 +1,4 @@
-interface ITechnologies {
+export default interface ITechnologies {
   id:string,
   name:string,
   category:string,
