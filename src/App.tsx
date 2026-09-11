@@ -2,8 +2,13 @@ import Banner from "./components/Banner"
 import Footer from "./components/Footer"
 import Navber from "./components/Navber"
 
-function App() {
+const technologiesFetch = async() => {
+  const res= await fetch ('/public/data.json');
+  const data = await res.json();
+  return data;
+}
 
+function App() {
 
   return (
     <>
