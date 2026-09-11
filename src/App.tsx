@@ -1,4 +1,5 @@
 import Banner from "./components/Banner"
+import Footer from "./components/Footer"
 import Navber from "./components/Navber"
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <>
       <Navber></Navber>
       <Banner></Banner>
+      <Footer></Footer>
     </>
   )
 }
