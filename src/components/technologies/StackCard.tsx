@@ -4,11 +4,13 @@ import type ITechnologies from "../types/Technologies";
 interface IStackCardProps {
   selectedTechnologies: ITechnologies[];
   onRemoveFromStack: (id: string) => void;
+  onRemoveAll: () => void;
 }
 
 const StackCard = ({
   selectedTechnologies,
   onRemoveFromStack,
+  onRemoveAll,
 }: IStackCardProps) => {
   return (
     <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-8 shadow-sm">
@@ -60,6 +62,13 @@ const StackCard = ({
               </div>
             ))}
           </div>
+
+          <button
+            onClick={onRemoveAll}
+            className="mt-6 w-full rounded-xl border border-red-200 py-3 text-sm font-semibold text-red-500 hover:bg-red-50 cursor-pointer"
+          >
+            Remove All
+          </button>
         </>
       )}
     </div>
