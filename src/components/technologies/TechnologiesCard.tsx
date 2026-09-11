@@ -3,9 +3,10 @@ import type ITechnologies from "../types/Technologies";
 
 interface ITechnologiesCardProps {
   technology: ITechnologies;
+  onAddToStack: (technology: ITechnologies) => void;
 }
 
-const TechnologiesCard = ({ technology }: ITechnologiesCardProps) => {
+const TechnologiesCard = ({ technology, onAddToStack }: ITechnologiesCardProps) => {
   return (
     <div>
       <div className="w-full min-h-75 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
@@ -38,6 +39,14 @@ const TechnologiesCard = ({ technology }: ITechnologiesCardProps) => {
             {technology.rating}
           </span>
         </div>
+
+        {/* CTA */}
+        <button
+          onClick={() => onAddToStack(technology)}
+          className="w-full rounded-xl bg-gray-900 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-800 cursor-pointer"
+        >
+          Add to Stack
+        </button>
       </div>
     </div>
   );
