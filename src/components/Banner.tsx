@@ -7,7 +7,7 @@ const Banner = () => {
       {/* Left Content */}
       <div className="flex items-center md:items-start flex-col text-center md:text-left">
 
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
           Build Your Ideal <br />
 
           <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent">
@@ -24,7 +24,7 @@ const Banner = () => {
         {/* Buttons */}
         <div className="flex items-center gap-3 my-6 w-full justify-center md:justify-start">
 
-          <button className="flex-1 sm:flex-none bg-linear-to-r from-[#F97316] to-[#EC4899] text-white font-medium px-4 sm:px-6 py-3 rounded-xl shadow-sm hover:shadow-md transition-all">
+          <button className="flex-1 sm:flex-none bg-linear-to-r from-[#F97316] to-[#EC4899] text-white font-semibold px-4 sm:px-6 py-3 rounded-xl shadow-sm hover:shadow-md transition-all">
             Explore Technologies
           </button>
 

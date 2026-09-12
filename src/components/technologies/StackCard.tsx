@@ -21,6 +21,7 @@ const StackCard = ({
           <p className="text-[12px] text-[#94A3B8] my-2">
             No technologies selected yet.
           </p>
+
           <p className="rounded-2xl border border-dashed border-gray-200 bg-white p-6 text-center text-[#94A3B8] text-[12px]">
             Your stack is empty.
           </p>
@@ -28,7 +29,8 @@ const StackCard = ({
       ) : (
         <>
           <p className="text-[12px] text-[#94A3B8] my-2">
-            {selectedTechnologies.length} Technology Selected
+            {selectedTechnologies.length} Technology
+            {selectedTechnologies.length > 1 ? "ies" : "y"} Selected
           </p>
 
           <div className="flex flex-col gap-3">
@@ -43,10 +45,12 @@ const StackCard = ({
                     alt=""
                     className="h-6 w-6 shrink-0"
                   />
+
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-gray-900 truncate">
                       {technology.name}
                     </p>
+
                     <p className="text-xs text-[#94A3B8] truncate">
                       {technology.category}
                     </p>

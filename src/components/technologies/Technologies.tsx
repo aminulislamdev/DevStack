@@ -1,9 +1,7 @@
 import { toast } from "react-toastify";
-
 import { use, useState } from "react";
 
 import type ITechnologies from "../types/Technologies";
-
 import TechnologiesCard from "./TechnologiesCard";
 import StackCard from "./StackCard";
 
@@ -14,40 +12,47 @@ interface ITechnologiesProps {
 const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
   const technologies = use(technologiesFetch);
 
-  const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnologies[]>([]);
+  const [selectedTechnologies, setSelectedTechnologies] = useState<
+    ITechnologies[]
+  >([]);
 
+  // Add technology
   const handleAddToStack = (technology: ITechnologies) => {
     const alreadySelected = selectedTechnologies.some(
       (item) => item.id === technology.id
     );
 
     if (alreadySelected) {
-      toast.warning(`${technology.name} is already in your stack`);
+      toast.warning(`${ technology.name } is already in your stack`);
       return;
     }
 
     setSelectedTechnologies((prev) => [...prev, technology]);
-    toast.success(`${technology.name} added to stack`);
+
+    toast.success(`${ technology.name } added to stack`);
   };
 
+  // Remove single technology
   const handleRemoveFromStack = (id: string) => {
     const removed = selectedTechnologies.find(
       (technology) => technology.id === id
     );
 
+    if (!removed) return;
+
     setSelectedTechnologies((prev) =>
       prev.filter((technology) => technology.id !== id)
     );
 
-    if (removed) {
-      toast.info(`${removed.name} removed from stack`);
-    }
+    toast.info(`${ removed.name } removed from stack`);
   };
 
+  // Remove all technologies
   const handleRemoveAll = () => {
     if (selectedTechnologies.length === 0) return;
 
     setSelectedTechnologies([]);
+
     toast.info("All technologies removed from your stack");
   };
 
@@ -60,22 +65,28 @@ const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
             Technologies
           </span>
         </h2>
+
         <p className="text-[#64748B] text-sm sm:text-[16px]">
           Pick one technology per category to build your ideal stack.
         </p>
       </div>
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+        {/* Technologies */}
         <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {technologies.map((technology) => (
             <TechnologiesCard
               key={technology.id}
               technology={technology}
+              isAdded={selectedTechnologies.some(
+                (item) => item.id === technology.id
+              )}
               onAddToStack={handleAddToStack}
             />
           ))}
         </div>
 
-        {/* Your Stack */}
+        {/* Stack */}
         <div className="lg:col-span-1">
           <StackCard
             selectedTechnologies={selectedTechnologies}
@@ -84,7 +95,6 @@ const Technologies = ({ technologiesFetch }: ITechnologiesProps) => {
           />
         </div>
       </div>
-      {/* Technology Cards */}
     </div>
   );
 };

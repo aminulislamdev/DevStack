@@ -79,7 +79,7 @@ const Navber = () => {
           />
 
           {/* Navigation */}
-          <ul className="flex justify-between items-center gap-10">
+          <ul className="flex justify-between items-center gap-10 text-sm font-medium text-[#475569]">
             <li className="text-[#DB2777]">
               <a href="">Home</a>
             </li>
@@ -103,11 +103,11 @@ const Navber = () => {
 
           {/* Auth Buttons */}
           <div className="flex justify-between items-center gap-5">
-            <button className="cursor-pointer">
+            <button className="cursor-pointer text-[#334155] text-sm font-medium">
               Sign In
             </button>
 
-            <button className="btn btn-secondary">
+            <button className="btn btn-secondary text-[#FFFFFF] font-semibold text-sm">
               Sign Up
             </button>
           </div>
