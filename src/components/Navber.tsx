@@ -23,7 +23,7 @@ const Navber = () => {
 
           {/* Logo */}
           <img
-            src={navLogo}
+            src='/ds.png'
             alt="Navbar Logo"
             className="h-8"
           />
